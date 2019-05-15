@@ -1,0 +1,15 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Unit test
+          command: |
+            yarn
+            yarn coverage
+      - store_artifacts:
+          path: ./coverage
+          destination: artifact-file 
