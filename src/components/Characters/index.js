@@ -18,11 +18,11 @@ export const Characters = ({ error, characters, getCharacters }) => {
   useEffect(() => { !characters.length && !error && getCharacters() }, [characters])
 
   return (
-    <div>
+    <div data-testid="characters-test">
       <Row gutter={8} type="flex" justify="center">
 
         {characters.map((character) =>
-          <Col span={4}>
+          <Col span={4} key={character.id}>
             <Card
               hoverable
               style={{ margin: '5px 5px' }}
@@ -47,7 +47,6 @@ export const Characters = ({ error, characters, getCharacters }) => {
 }
 
 const mapStateToProps = ({ characters }) => ({
-  loading: characters.loading,
   error: characters.error,
   characters: characters.items,
   limit: characters.limit,

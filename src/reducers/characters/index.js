@@ -6,13 +6,8 @@ const initialState = {
   offset: 0
 }
 
-const Characters = (state = initialState, action) => {
+const characters = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_DADOS':
-      return {
-        ...state,
-        items: action.payload
-      }
     case 'CHARACTERS_REQUEST':
       return {
         ...state,
@@ -40,4 +35,4 @@ const Characters = (state = initialState, action) => {
   }
 }
 
-export default Characters
+export default characters

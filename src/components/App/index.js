@@ -9,7 +9,7 @@ const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
 
 export const App = () => (
-  <div className="App">
+  <div className="App" data-testid="app-test">
     <Layout>
       <Header style={{ position: 'fixed', zIndex: 1, width: '100%', backgroundColor: 'white' }}>
         <Row>
