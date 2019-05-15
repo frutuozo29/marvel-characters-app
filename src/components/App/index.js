@@ -1,8 +1,10 @@
 import React from 'react';
 
+import Characters from '../Characters'
+
 export const App = () => (
   <div className="App">
-    <h1>App</h1>
+    <Characters />
   </div>
 );
 
