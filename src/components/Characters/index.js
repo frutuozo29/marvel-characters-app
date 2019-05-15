@@ -7,6 +7,11 @@ import { connect } from 'react-redux'
 
 import * as charactersActions from '../../actions/characters'
 
+// Antd
+import { Card, Col, Row } from 'antd';
+
+const { Meta } = Card;
+
 export const Characters = ({ error, characters, getCharacters }) => {
 
   // eslint-disable-next-line
@@ -14,9 +19,29 @@ export const Characters = ({ error, characters, getCharacters }) => {
 
   return (
     <div>
-      <ul>
-        {characters.map((character) => <li key={character.id}>{character.id} - {character.name}</li>)}
-      </ul>
+      <Row gutter={8} type="flex" justify="center">
+
+        {characters.map((character) =>
+          <Col span={4}>
+            <Card
+              hoverable
+              style={{ margin: '5px 5px' }}
+              size="small"
+              cover={
+                <img
+                  style={{ width: '100%', height: 170 }}
+                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                  alt={`thumbnail`}
+                />
+              }
+            >
+              <Meta title={character.name} />
+            </Card>
+          </Col>
+        )
+        }
+      </Row>
+
     </div>
   )
 }

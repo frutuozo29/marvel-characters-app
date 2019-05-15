@@ -9,12 +9,9 @@ export const getCharactersRequestError = () => ({ type: 'CHARACTERS_REQUEST_ERRO
 
 export const getCharacters = () => (dispacth, getState) => {
   dispacth(getCharactersRequest())
-  //dispacth(getCharactersRequestSucess({ results: [{ id: 1, name: 'renan' }], count: 1 }))
 
   const { offset, limit } = getState().characters
-  console.log(offset)
-  console.log(limit)
-  console.log('passou aqui')
+
   return fetch(`${API_URL}?apikey=${API_KEY}&limit=${limit}&offset=${offset}`)
     .then(response => {
       if (!response.ok) throw Error()
@@ -24,5 +21,4 @@ export const getCharacters = () => (dispacth, getState) => {
     .then(response => response.json())
     .then(response => dispacth(getCharactersRequestSucess(response.data)))
     .catch(() => dispacth(getCharactersRequestError()))
-  //return ({ type: 'TEST' })
 }
