@@ -7,6 +7,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
@@ -15,8 +16,8 @@
   "devDependencies": {
     "fetch-mock": "^7.3.3",
     "jest-dom": "^3.2.2",
-    "redux-mock-store": "^1.5.3",
-    "react-testing-library": "^7.0.0"
+    "react-testing-library": "^7.0.0",
+    "redux-mock-store": "^1.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
