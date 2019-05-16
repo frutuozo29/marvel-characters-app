@@ -14,6 +14,9 @@ describe('App test', () => {
   const mockStore = configureMockStore([thunk])
 
   const store = mockStore({
+    filter: {
+      filter: ''
+    },
     characters: {
       error: false,
       items: [],

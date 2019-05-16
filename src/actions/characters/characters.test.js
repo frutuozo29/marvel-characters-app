@@ -35,12 +35,22 @@ describe('Actions test', () => {
       characters: {
         offset: 0,
         limit: 20
+      },
+      filter: {
+        filter: ''
       }
     })
   })
 
   afterEach(() => {
     fetchMock.restore()
+  })
+
+  test('Action cleanCharacters', () => {
+    const action = actions.cleanCharacters();
+    expect(action).toEqual({
+      type: 'CLEAN_CHARACTERS'
+    })
   })
 
   test('Action getCharactersRequest', () => {
@@ -91,6 +101,24 @@ describe('Actions test', () => {
     ]
 
     await store.dispatch(actions.getCharacters())
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  test('Action getCharacters isSearch = true', async () => {
+    fetchMock.mock(URL_MOCK_API, response)
+
+    const expectedActions = [
+      { type: 'CLEAN_CHARACTERS' },
+      { type: 'CHARACTERS_REQUEST' },
+      {
+        type: 'CHARACTERS_REQUEST_SUCESS',
+        payload: {
+          ...response.data
+        }
+      }
+    ]
+
+    await store.dispatch(actions.getCharacters(true))
     expect(store.getActions()).toEqual(expectedActions)
   })
 

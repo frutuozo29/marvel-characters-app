@@ -19,6 +19,9 @@ describe('Characters test', () => {
       items: [],
       limit: 50,
       offset: 0
+    },
+    filter: {
+      filter: ''
     }
   })
 

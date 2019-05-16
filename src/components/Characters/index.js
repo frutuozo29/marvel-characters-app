@@ -12,10 +12,10 @@ import { Card, Col, Row } from 'antd';
 
 const { Meta } = Card;
 
-export const Characters = ({ error, characters, getCharacters }) => {
+export const Characters = ({ loading, error, characters, getCharacters }) => {
 
   // eslint-disable-next-line
-  useEffect(() => { !characters.length && !error && getCharacters() }, [characters])
+  useEffect(() => { !characters.length && !loading && !error && getCharacters() }, [characters])
 
   return (
     <div data-testid="characters-test">
@@ -48,6 +48,7 @@ export const Characters = ({ error, characters, getCharacters }) => {
 
 const mapStateToProps = ({ characters }) => ({
   error: characters.error,
+  loading: characters.loading,
   characters: characters.items,
   limit: characters.limit,
   offset: characters.offset

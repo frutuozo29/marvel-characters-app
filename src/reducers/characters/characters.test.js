@@ -46,4 +46,14 @@ describe('Reducer test', () => {
       offset: 0
     })
   })
+
+  test('return when CLEAN_CHARACTERS', () => {
+    const action = { type: 'CLEAN_CHARACTERS' }
+
+    expect(characters(undefined, action)).toEqual({
+      ...state,
+      items: []
+    })
+  })
+
 })

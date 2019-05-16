@@ -7,12 +7,18 @@ export const getCharactersRequestSucess = (payload) => ({ type: 'CHARACTERS_REQU
 
 export const getCharactersRequestError = () => ({ type: 'CHARACTERS_REQUEST_ERROR' })
 
-export const getCharacters = () => (dispacth, getState) => {
+export const cleanCharacters = () => ({ type: 'CLEAN_CHARACTERS' })
+
+export const getCharacters = (isSearch = false) => (dispacth, getState) => {
+  isSearch && dispacth(cleanCharacters())
   dispacth(getCharactersRequest())
 
   const { offset, limit } = getState().characters
 
-  return fetch(`${API_URL}?apikey=${API_KEY}&limit=${limit}&offset=${offset}`)
+  const { filter } = getState().filter
+  const queryFilter = filter ? `&nameStartsWith=${filter}` : ''
+
+  return fetch(`${API_URL}?apikey=${API_KEY}${queryFilter}&limit=${limit}&offset=${offset}`)
     .then(response => {
       if (!response.ok) throw Error()
 

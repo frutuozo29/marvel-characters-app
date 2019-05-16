@@ -30,6 +30,11 @@ const characters = (state = initialState, action) => {
         items: [],
         offset: 0
       }
+    case 'CLEAN_CHARACTERS':
+      return {
+        ...state,
+        items: []
+      }
     default:
       return state
   }
