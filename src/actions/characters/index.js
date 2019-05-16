@@ -10,15 +10,23 @@ export const getCharactersRequestError = () => ({ type: 'CHARACTERS_REQUEST_ERRO
 export const getCharacters = () => (dispacth, getState) => {
   dispacth(getCharactersRequest())
 
+  const { filter } = getState().filter
   const { offset, limit } = getState().characters
 
-  return fetch(`${API_URL}?apikey=${API_KEY}&limit=${limit}&offset=${offset}`)
+  const filterCharacter = filter ? `nameStartsWith=${filter}` : ''
+  console.log(filterCharacter)
+  return fetch(`${API_URL}?${filterCharacter}&apikey=${API_KEY}&limit=${limit}&offset=${offset}`)
     .then(response => {
       if (!response.ok) throw Error()
 
       return response
     })
     .then(response => response.json())
-    .then(response => dispacth(getCharactersRequestSucess(response.data)))
+    .then(response => {
+      dispacth(getCharactersRequestSucess(response.data))
+      console.log(response)
+    })
     .catch(() => dispacth(getCharactersRequestError()))
 }
+
+export const updateFilter = (filter) => ({ type: 'UPDATE_FILTER', filter })

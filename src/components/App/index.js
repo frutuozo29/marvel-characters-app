@@ -1,26 +1,16 @@
 import React from 'react';
 
 import Characters from '../Characters'
+import TopBar from '../TopBar'
 // antd
-import { Layout, Input, Row, Col, Typography } from 'antd';
+import { Layout } from 'antd';
 
-const { Header, Footer, Content } = Layout;
-
-const { Title } = Typography;
+const { Footer, Content } = Layout;
 
 export const App = () => (
   <div className="App" data-testid="app-test">
     <Layout>
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%', backgroundColor: 'white' }}>
-        <Row>
-          <Col span={8}>
-            <Title level={2} style={{ color: 'red', marginTop: 10 }}>Marvel Characters</Title>
-          </Col>
-          <Col span={8} offset={8}>
-            <Input.Search placeholder="Find a character" />
-          </Col>
-        </Row>
-      </Header>
+      <TopBar />
       <Content style={{ padding: '0 50px', marginTop: 64 }}>
         <Characters />
       </Content>
