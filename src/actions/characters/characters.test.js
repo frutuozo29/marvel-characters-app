@@ -35,6 +35,9 @@ describe('Actions test', () => {
       characters: {
         offset: 0,
         limit: 20
+      },
+      filter: {
+        filter: ''
       }
     })
   })

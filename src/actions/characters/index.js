@@ -12,20 +12,16 @@ export const getCharacters = () => (dispacth, getState) => {
 
   const { filter } = getState().filter
   const { offset, limit } = getState().characters
+  const queryFilter = filter ? `&nameStartsWith=${filter}` : ''
 
-  const filterCharacter = filter ? `nameStartsWith=${filter}` : ''
-  console.log(filterCharacter)
-  return fetch(`${API_URL}?${filterCharacter}&apikey=${API_KEY}&limit=${limit}&offset=${offset}`)
+  return fetch(`${API_URL}?apikey=${API_KEY}&limit=${limit}&offset=${offset}`)
     .then(response => {
       if (!response.ok) throw Error()
 
       return response
     })
     .then(response => response.json())
-    .then(response => {
-      dispacth(getCharactersRequestSucess(response.data))
-      console.log(response)
-    })
+    .then(response => dispacth(getCharactersRequestSucess(response.data)))
     .catch(() => dispacth(getCharactersRequestError()))
 }
 
