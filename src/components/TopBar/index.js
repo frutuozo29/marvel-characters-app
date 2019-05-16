@@ -30,7 +30,7 @@ export class TopBar extends Component {
                 placeholder="Find a character"
                 value={filter}
                 onChange={({ target: { value } }) => updateFilter(value)}
-                onSearch={() => filter && getCharacters()}
+                onSearch={() => getCharacters(true)}
               />
             </Col>
           </Row>
