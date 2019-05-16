@@ -24,5 +24,3 @@ export const getCharacters = () => (dispacth, getState) => {
     .then(response => dispacth(getCharactersRequestSucess(response.data)))
     .catch(() => dispacth(getCharactersRequestError()))
 }
-
-export const updateFilter = (filter) => ({ type: 'UPDATE_FILTER', filter })
