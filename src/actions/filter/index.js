@@ -1,1 +1,3 @@
-export const updateFilter = (filter = '') => ({ type: 'UPDATE_FILTER', filter })
+export const updateFilter = (filter = '') => (
+    { type: 'UPDATE_FILTER', filter }
+)

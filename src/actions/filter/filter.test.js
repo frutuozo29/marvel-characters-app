@@ -1,4 +1,4 @@
-import * as actions from '../characters'
+import * as actions from '../filter'
 
 describe('Actions test', () => {
 
@@ -6,7 +6,7 @@ describe('Actions test', () => {
     const actionFilter = actions.updateFilter();
     expect(actionFilter).toEqual({
       type: 'UPDATE_FILTER',
-      filter: undefined
+      filter: ''
     })
   })
 
