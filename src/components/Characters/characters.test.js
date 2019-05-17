@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from "react-router-dom";
 
 // React Testing Library
-import { render } from 'react-testing-library'
+import { render, fireEvent } from 'react-testing-library'
 
 describe('Characters test', () => {
 
@@ -114,6 +114,16 @@ describe('Characters test', () => {
 
     }
     const { getByTestId } = render(<Router><CharactersComponent {...props} /></Router>)
+
+    expect(getByTestId('characters-test')).toBeInTheDocument()
+  })
+
+  test('click load more', () => {
+    const { getByTestId, container } = render(<Router><CharactersComponent {...props} /></Router>)
+
+    const button = container.querySelector('button[name=load-more]')
+
+    fireEvent.click(button)
 
     expect(getByTestId('characters-test')).toBeInTheDocument()
   })

@@ -23,10 +23,11 @@ export class TopBar extends Component {
         <Header style={{ position: 'fixed', zIndex: 1, width: '100%', backgroundColor: 'white' }}>
           <Row>
             <Col span={8}>
-              <Title level={2} style={{ color: 'red', marginTop: 10 }}>Marvel Characters</Title>
+              <Title level={2} style={{ color: '#096dd9', marginTop: 10 }}>Marvel Characters</Title>
             </Col>
             <Col span={8} offset={8}>
               <Input.Search
+                name="search"
                 placeholder="Find a character"
                 value={filter}
                 onChange={({ target: { value } }) => updateFilter(value)}
