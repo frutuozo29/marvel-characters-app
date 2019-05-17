@@ -8,6 +8,8 @@ import { Provider } from 'react-redux'
 
 // React Testing Library
 import { render } from 'react-testing-library'
+// react router
+import { BrowserRouter as Router } from "react-router-dom";
 
 describe('App test', () => {
 
@@ -22,12 +24,15 @@ describe('App test', () => {
       items: [],
       limit: 50,
       offset: 0
+    },
+    localCharacters: {
+      characters: []
     }
   })
 
   test('render component', () => {
 
-    const { getByTestId } = render(<Provider store={store}><App /></Provider>)
+    const { getByTestId } = render(<Provider store={store}><Router><App /></Router></Provider>)
 
     expect(getByTestId('app-test')).toBeInTheDocument()
   })
