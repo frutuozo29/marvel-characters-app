@@ -9,8 +9,8 @@ import { Layout } from 'antd';
 
 const { Footer, Content } = Layout;
 
-export const App = () => (
-  <div className="App" data-testid="app-test">
+const App = () => (
+  <div data-testid="app-test">
     <Layout>
       <TopBar />
       <Content style={{ padding: '0 50px', marginTop: 64 }}>

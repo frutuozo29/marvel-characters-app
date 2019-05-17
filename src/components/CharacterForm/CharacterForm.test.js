@@ -27,7 +27,7 @@ describe('CharacterForm test with Redux', () => {
     characters: {
       items: [
         {
-          id: '1',
+          id: 1,
           name: 'test',
           description: 'test description'
         }
@@ -58,7 +58,7 @@ describe('CharacterComponentForm test without Redux', () => {
         }
       },
       characters: [{
-        id: '1',
+        id: 1,
         name: 'test',
         description: 'test description',
         thumbnail: {
@@ -74,7 +74,7 @@ describe('CharacterComponentForm test without Redux', () => {
       history: {
         push: jest.fn()
       },
-      postLocalCharacter: jest.fn()
+      saveLocalCharacter: jest.fn()
     }
   })
 

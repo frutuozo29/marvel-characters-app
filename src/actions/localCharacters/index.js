@@ -1,4 +1,4 @@
-export const postLocalCharacter = (character) => ({
-  type: 'POST_LOCAL_CHARACTER',
+export const saveLocalCharacter = (character) => ({
+  type: 'SAVE_LOCAL_CHARACTER',
   character
 })
