@@ -71,12 +71,14 @@ export class CharacterForm extends Component {
           </Row>
           <Form.Item>
             <Button
+              name="save"
               type="primary"
               onClick={this.saveCharacter.bind(this)}
             >
               Save
             </Button>
             <Button
+              name="cancel"
               style={{ marginLeft: 2 }}
               type="outline"
               onClick={() => this.props.history.push('/')}
