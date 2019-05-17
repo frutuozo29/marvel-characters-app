@@ -34,104 +34,102 @@ export class CharacterForm extends Component {
   }
 
   saveCharacter() {
-    const { saveLocalCharacter } = this.props
+    const { saveLocalCharacter, history } = this.props
 
     saveLocalCharacter({ ...this.state })
-    this.props.history.push('/')
+    history.push('/')
   }
 
   render() {
     const { name, description, character } = this.state
     const { details } = this.props.match.params
 
-    if (details)
-      return (
-        <div data-testid="characterFormDetail">
-          <Title level={2}>Character Details</Title>
-          <Row gutter={8}>
-            <Col span={4}>
-              <img
-                style={{ width: '100%', height: 170 }}
-                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                alt={`thumbnail`}
-              />
-            </Col>
-            <Col span={12}>
-              <Title level={4}>{character.name}</Title>
-              <Paragraph ellipsis={{ rows: 3, expandable: true }}>{character.description}</Paragraph >
-            </Col>
-            <Col span={6}>
-              <List
-                size="small"
-                header={<div>Series</div>}
-                bordered
-                dataSource={character.series.items}
-                renderItem={item => <List.Item>{item.name}</List.Item>}
-              />
-            </Col>
-          </Row>
-          <Row style={{ marginTop: 15 }}>
-            <Col span={4}>
-              <Button
-                name="back"
-                type="outline"
-                onClick={() => this.props.history.push('/')}
-              >
-                Back to list
-            </Button>
-            </Col>
-          </Row>
-        </div>
-      )
-    return (
-      <div data-testid="characterForm">
-        <Title level={2}>Editing Character</Title>
-        <Form>
-          <Row>
-            <Col span={6}>
-              <Form.Item label="Name">
-                <Input
-                  name="name"
-                  placeholder="Input a name"
-                  value={name}
-                  onChange={({ target: { name, value } }) => this.setState((state) => ({ ...state, [name]: value }))}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={10}>
-              <Form.Item label="Description">
-                <Input.TextArea
-                  rows={4}
-                  name="description"
-                  placeholder="Input a description"
-                  value={description}
-                  onChange={({ target: { name, value } }) => this.setState((state) => ({ ...state, [name]: value }))}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Form.Item>
+    return details ? (
+      <div data-testid="characterFormDetail">
+        <Title level={2}>Character Details</Title>
+        <Row gutter={8}>
+          <Col span={4}>
+            <img
+              style={{ width: '100%', height: 170 }}
+              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+              alt={`thumbnail`}
+            />
+          </Col>
+          <Col span={12}>
+            <Title level={4}>{character.name}</Title>
+            <Paragraph ellipsis={{ rows: 3, expandable: true }}>{character.description}</Paragraph >
+          </Col>
+          <Col span={6}>
+            <List
+              size="small"
+              header={<div>Series</div>}
+              bordered
+              dataSource={character.series.items}
+              renderItem={item => <List.Item>{item.name}</List.Item>}
+            />
+          </Col>
+        </Row>
+        <Row style={{ marginTop: 15 }}>
+          <Col span={4}>
             <Button
-              name="save"
-              type="primary"
-              onClick={this.saveCharacter.bind(this)}
-            >
-              Save
-            </Button>
-            <Button
-              name="cancel"
-              style={{ marginLeft: 2 }}
+              name="back"
               type="outline"
               onClick={() => this.props.history.push('/')}
             >
-              Cancel
+              Back to list
             </Button>
-          </Form.Item>
-        </Form>
-      </div >
-    )
+          </Col>
+        </Row>
+      </div>
+    ) : (
+        <div data-testid="characterForm">
+          <Title level={2}>Editing Character</Title>
+          <Form>
+            <Row>
+              <Col span={6}>
+                <Form.Item label="Name">
+                  <Input
+                    name="name"
+                    placeholder="Input a name"
+                    value={name}
+                    onChange={({ target: { name, value } }) => this.setState((state) => ({ ...state, [name]: value }))}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row>
+              <Col span={10}>
+                <Form.Item label="Description">
+                  <Input.TextArea
+                    rows={4}
+                    name="description"
+                    placeholder="Input a description"
+                    value={description}
+                    onChange={({ target: { name, value } }) => this.setState((state) => ({ ...state, [name]: value }))}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+            <Form.Item>
+              <Button
+                name="save"
+                type="primary"
+                onClick={this.saveCharacter.bind(this)}
+              >
+                Save
+          </Button>
+              <Button
+                name="cancel"
+                style={{ marginLeft: 2 }}
+                type="outline"
+                onClick={() => this.props.history.push('/')}
+              >
+                Cancel
+          </Button>
+            </Form.Item>
+          </Form>
+        </div >
+      )
   }
 }
 
