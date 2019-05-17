@@ -10,6 +10,7 @@ export default class Routes extends Component {
       <Switch>
         <Route exact path='/characters' component={Characters} />
         <Route exact path='/characters/:id' component={CharacterForm} />
+        <Route exact path='/characters/:id/:details' component={CharacterForm} />
         <Route exact path='*' component={Characters} />
       </Switch>
     )
