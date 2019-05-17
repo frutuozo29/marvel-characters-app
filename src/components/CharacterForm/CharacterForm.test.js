@@ -66,7 +66,9 @@ describe('CharacterComponentForm test without Redux', () => {
           extension: ''
         },
         series: {
-          items: []
+          items: [{
+            name: ''
+          }]
         }
       }],
       history: {
