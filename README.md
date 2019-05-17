@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/frutuozo29/marvel-characters-app/tree/master.svg?style=svg)](https://circleci.com/gh/frutuozo29/marvel-characters-app/tree/master)
+[![CircleCI](https://circleci.com/gh/frutuozo29/marvel-characters-app/tree/master.svg?style=svg)](https://circleci.com/gh/frutuozo29/marvel-characters-app/tree/master)  [![Netlify Status](https://api.netlify.com/api/v1/badges/f0e54f13-4000-4720-8007-56c7901e65e0/deploy-status)](https://app.netlify.com/sites/marvel-characters-app/deploys)
 
 ### `npm start`
 
