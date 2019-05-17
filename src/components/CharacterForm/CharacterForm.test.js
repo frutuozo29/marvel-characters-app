@@ -60,7 +60,11 @@ describe('CharacterComponent test without Redux', () => {
         id: '1',
         name: 'test',
         description: 'test description'
-      }]
+      }],
+      history: {
+        push: jest.fn()
+      },
+      postLocalCharacter: jest.fn()
     }
   })
 
@@ -89,6 +93,26 @@ describe('CharacterComponent test without Redux', () => {
     fireEvent.change(input, { target: { value: 'test' } })
 
     expect(input.value).toEqual('test')
+  })
+
+  test('click save', () => {
+    const { getByTestId, container } = render(<CharacterFormComponent {...props} />)
+
+    const button = container.querySelector('button[name=save]')
+
+    fireEvent.click(button)
+
+    expect(getByTestId('characterForm')).toBeInTheDocument()
+  })
+
+  test('click cancel', () => {
+    const { getByTestId, container } = render(<CharacterFormComponent {...props} />)
+
+    const button = container.querySelector('button[name=cancel]')
+
+    fireEvent.click(button)
+
+    expect(getByTestId('characterForm')).toBeInTheDocument()
   })
 
 })

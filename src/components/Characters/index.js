@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import * as charactersActions from '../../actions/characters'
 
 // Antd
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Button } from 'antd';
 
 const { Meta } = Card;
 
@@ -54,6 +54,16 @@ export const Characters = ({ loading, error, characters, localCharacters, getCha
         )
         }
       </Row>
+      <div>
+        <Button
+          name="load-more"
+          type="outline"
+          disabled={loading}
+          onClick={() => getCharacters()}
+        >
+          Load more
+        </Button>
+      </div>
 
     </div>
   )
