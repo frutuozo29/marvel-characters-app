@@ -33,7 +33,10 @@ const characters = (state = initialState, action) => {
     case 'CLEAN_CHARACTERS':
       return {
         ...state,
-        items: []
+        items: [],
+        loading: false,
+        error: false,
+        offset: 0
       }
     default:
       return state

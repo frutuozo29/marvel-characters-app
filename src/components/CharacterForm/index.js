@@ -8,38 +8,82 @@ import { connect } from 'react-redux'
 import * as localCharactersActions from '../../actions/localCharacters'
 
 // ant
-import { Form, Input, Button, Row, Col, Typography } from 'antd';
+import { Form, Input, Button, Row, Col, Typography, List } from 'antd';
 
-const { Title } = Typography
+const { Title, Paragraph } = Typography
 
 export class CharacterForm extends Component {
 
   state = {
     id: 0,
     name: '',
-    description: ''
+    description: '',
+    character: {}
   }
 
   componentWillMount() {
     const { id } = this.props.match.params
     // eslint-disable-next-line
-    const character = this.props.characters.find((characterFind) => characterFind.id == id)
+    const characterFilter = this.props.characters.find((characterFind) => characterFind.id == id)
 
     this.setState(() => ({
-      id: character.id,
-      name: character.name,
-      description: character.description
+      id: characterFilter.id,
+      name: characterFilter.name,
+      description: characterFilter.description,
+      character: { ...characterFilter }
     }))
   }
 
   saveCharacter() {
     const { postLocalCharacter } = this.props
+
     postLocalCharacter({ ...this.state })
     this.props.history.push('/')
   }
 
   render() {
-    const { name, description } = this.state
+    const { name, description, character } = this.state
+    const { details } = this.props.match.params
+
+    if (details)
+      return (
+        <div data-testid="characterFormDetail">
+          <Title level={2}>Character Details</Title>
+          <Row gutter={8}>
+            <Col span={4}>
+              <img
+                style={{ width: '100%', height: 170 }}
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt={`thumbnail`}
+              />
+            </Col>
+            <Col span={12}>
+              <Title level={4}>{character.name}</Title>
+              <Paragraph ellipsis={{ rows: 3, expandable: true }}>{character.description}</Paragraph >
+            </Col>
+            <Col span={6}>
+              <List
+                size="small"
+                header={<div>Series</div>}
+                bordered
+                dataSource={character.series.items}
+                renderItem={item => <List.Item>{item.name}</List.Item>}
+              />
+            </Col>
+          </Row>
+          <Row style={{ marginTop: 15 }}>
+            <Col span={4}>
+              <Button
+                name="back"
+                type="outline"
+                onClick={() => this.props.history.push('/')}
+              >
+                Back to list
+            </Button>
+            </Col>
+          </Row>
+        </div>
+      )
     return (
       <div data-testid="characterForm">
         <Title level={2}>Editing Character</Title>
