@@ -46,20 +46,28 @@ describe('CharacterForm test with Redux', () => {
   })
 })
 
-describe('CharacterComponent test without Redux', () => {
+describe('CharacterComponentForm test without Redux', () => {
   let props
 
   beforeEach(() => {
     props = {
       match: {
         params: {
-          id: '1'
+          id: '1',
+          details: ''
         }
       },
       characters: [{
         id: '1',
         name: 'test',
-        description: 'test description'
+        description: 'test description',
+        thumbnail: {
+          path: '',
+          extension: ''
+        },
+        series: {
+          items: []
+        }
       }],
       history: {
         push: jest.fn()
@@ -113,6 +121,26 @@ describe('CharacterComponent test without Redux', () => {
     fireEvent.click(button)
 
     expect(getByTestId('characterForm')).toBeInTheDocument()
+  })
+
+  test('click back', () => {
+    props = {
+      ...props,
+      match: {
+        ...props.match,
+        params: {
+          ...props.match.params,
+          details: 'details'
+        }
+      }
+    }
+
+    const { getByTestId, container } = render(<CharacterFormComponent {...props} />)
+    const button = container.querySelector('button[name=back]')
+
+    fireEvent.click(button)
+
+    expect(getByTestId('characterFormDetail')).toBeInTheDocument()
   })
 
 })
