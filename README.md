@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/frutuozo29/marvel-characters-app/tree/master.svg?style=svg)](https://circleci.com/gh/frutuozo29/marvel-characters-app/tree/master)
 
 ### `npm start`
 
