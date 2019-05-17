@@ -6,6 +6,7 @@ import fetchMock from 'fetch-mock'
 
 const mockStore = configureMockStore([thunk])
 const URL_MOCK_API = 'https://gateway.marvel.com/v1/public/characters?apikey=e6dd575a751d830896bec720dea8405f&limit=20&offset=0'
+const URL_MOCK_API_FILTER = `${URL_MOCK_API}&nameStartsWith=test`
 
 const response = {
   data: {
@@ -87,6 +88,33 @@ describe('Actions test', () => {
         }
       }
     ]
+
+    await store.dispatch(actions.getCharacters())
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  test('Action getCharacters Sucess with filter', async () => {
+    fetchMock.mock(URL_MOCK_API_FILTER, response)
+
+    const expectedActions = [
+      { type: 'CHARACTERS_REQUEST' },
+      {
+        type: 'CHARACTERS_REQUEST_SUCESS',
+        payload: {
+          ...response.data
+        }
+      }
+    ]
+
+    store = mockStore({
+      characters: {
+        offset: 0,
+        limit: 20
+      },
+      filter: {
+        filter: 'test'
+      }
+    })
 
     await store.dispatch(actions.getCharacters())
     expect(store.getActions()).toEqual(expectedActions)

@@ -18,7 +18,7 @@ export const getCharacters = (isSearch = false) => (dispacth, getState) => {
   const { filter } = getState().filter
   const queryFilter = filter ? `&nameStartsWith=${filter}` : ''
 
-  return fetch(`${API_URL}?apikey=${API_KEY}${queryFilter}&limit=${limit}&offset=${offset}`)
+  return fetch(`${API_URL}?apikey=${API_KEY}&limit=${limit}&offset=${offset}${queryFilter}`)
     .then(response => {
       if (!response.ok) throw Error()
 

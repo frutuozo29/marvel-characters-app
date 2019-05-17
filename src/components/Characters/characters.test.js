@@ -5,6 +5,8 @@ import Characters, { Characters as CharactersComponent } from '../Characters';
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
+// react router
+import { BrowserRouter as Router } from "react-router-dom";
 
 // React Testing Library
 import { render } from 'react-testing-library'
@@ -22,6 +24,9 @@ describe('Characters test', () => {
     },
     filter: {
       filter: ''
+    },
+    localCharacters: {
+      characters: []
     }
   })
 
@@ -58,14 +63,24 @@ describe('Characters test', () => {
             extension: ''
           }
         }
+      ],
+      localCharacters: [
+        {
+          id: 1,
+          name: 'test',
+          thumbnail: {
+            path: '',
+            extension: ''
+          }
+        }
       ]
     }
-    const { getByTestId } = render(<CharactersComponent {...props} />)
+    const { getByTestId } = render(<Router><CharactersComponent {...props} /></Router>)
 
     expect(getByTestId('characters-test')).toBeInTheDocument()
   })
 
-  test('render component with characters', () => {
+  test('render component with localCharacters', () => {
     props = {
       ...props,
       characters: [
@@ -77,9 +92,28 @@ describe('Characters test', () => {
             extension: ''
           }
         }
+      ],
+      localCharacters: [
+        {
+          id: 1,
+          name: 'test',
+          thumbnail: {
+            path: '',
+            extension: ''
+          }
+        },
+        {
+          id: 2,
+          name: 'test2',
+          thumbnail: {
+            path: '',
+            extension: ''
+          }
+        }
       ]
+
     }
-    const { getByTestId } = render(<CharactersComponent {...props} />)
+    const { getByTestId } = render(<Router><CharactersComponent {...props} /></Router>)
 
     expect(getByTestId('characters-test')).toBeInTheDocument()
   })

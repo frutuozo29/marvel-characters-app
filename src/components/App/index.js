@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Characters from '../Characters'
+// routes
+import Routes from '../../routes'
+
 import TopBar from '../TopBar'
 // antd
 import { Layout } from 'antd';
@@ -12,9 +14,9 @@ export const App = () => (
     <Layout>
       <TopBar />
       <Content style={{ padding: '0 50px', marginTop: 64 }}>
-        <Characters />
+        <Routes />
       </Content>
-      <Footer>Footer</Footer>
+      <Footer>copyright © 2019 MARVEL</Footer>
     </Layout>
   </div >
 );
