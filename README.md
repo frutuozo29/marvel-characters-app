@@ -7,7 +7,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f0e54f13-4000-4720-8007-56c7901e65e0/deploy-status)](https://app.netlify.com/sites/marvel-characters-app/deploys)
 
 ## `Descrição:`
-Projeto criado para listar os personagens da Marvel, permite pesquisar personagens por nome, visualizar as principais series que o personagem participa e alterar nome e descrição local dos personagens. 
+Projeto criado para listar os personagens da Marvel, permite pesquisar personagens por nome, visualizar as principais series que o personagem participa e alterar nome e descrição dos personagens.
 
 ### `Como rodar`
 ```bash
