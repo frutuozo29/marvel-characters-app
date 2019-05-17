@@ -1,4 +1,4 @@
-export const API_URL = 'https://gateway.marvel.com:443/v1/public/characters'
+const API_URL = 'https://gateway.marvel.com:443/v1/public/characters'
 const API_KEY = 'e6dd575a751d830896bec720dea8405f'
 
 export const getCharactersRequest = () => ({ type: 'CHARACTERS_REQUEST' })
@@ -25,6 +25,6 @@ export const getCharacters = (isSearch = false) => (dispacth, getState) => {
       return response
     })
     .then(response => response.json())
-    .then(response => dispacth(getCharactersRequestSucess(response.data)))
+    .then(({ data }) => dispacth(getCharactersRequestSucess(data)))
     .catch(() => dispacth(getCharactersRequestError()))
 }

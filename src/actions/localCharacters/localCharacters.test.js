@@ -2,11 +2,11 @@ import * as actions from '../localCharacters'
 
 describe('Actions test', () => {
 
-  test('Action postLocalCharacter', () => {
+  test('Action saveLocalCharacter', () => {
     const character = { id: 1, name: 'Wolw' }
-    const actionFilter = actions.postLocalCharacter(character);
+    const actionFilter = actions.saveLocalCharacter(character);
     expect(actionFilter).toEqual({
-      type: 'POST_LOCAL_CHARACTER',
+      type: 'SAVE_LOCAL_CHARACTER',
       character
     })
   })

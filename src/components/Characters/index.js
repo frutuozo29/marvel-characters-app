@@ -15,8 +15,8 @@ const { Meta } = Card
 
 export const Characters = ({ loading, error, characters, localCharacters, getCharacters }) => {
 
-  // eslint-disable-next-line
-  useEffect(() => { !characters.length && !loading && !error && getCharacters() }, [characters])
+
+  useEffect(() => { !characters.length && !loading && !error && getCharacters() })
 
   characters.length && localCharacters.length && characters.forEach((character, i) => {
     localCharacters.forEach((localCharacter) => {

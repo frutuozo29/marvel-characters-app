@@ -15,8 +15,7 @@ const { Title } = Typography;
 export class TopBar extends Component {
 
   render() {
-    const { filter } = this.props
-    const { updateFilter, getCharacters } = this.props
+    const { filter, updateFilter, getCharacters } = this.props
 
     return (
       <div data-testid="topbar-test">

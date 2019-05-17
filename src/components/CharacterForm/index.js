@@ -23,8 +23,7 @@ export class CharacterForm extends Component {
 
   componentWillMount() {
     const { id } = this.props.match.params
-    // eslint-disable-next-line
-    const characterFilter = this.props.characters.find((characterFind) => characterFind.id == id)
+    const characterFilter = this.props.characters.find((characterFind) => characterFind.id === parseInt(id))
 
     this.setState(() => ({
       id: characterFilter.id,
@@ -35,9 +34,9 @@ export class CharacterForm extends Component {
   }
 
   saveCharacter() {
-    const { postLocalCharacter } = this.props
+    const { saveLocalCharacter } = this.props
 
-    postLocalCharacter({ ...this.state })
+    saveLocalCharacter({ ...this.state })
     this.props.history.push('/')
   }
 

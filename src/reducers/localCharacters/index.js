@@ -4,7 +4,7 @@ const initialState = {
 
 const localCharacters = (state = initialState, action) => {
   switch (action.type) {
-    case 'POST_LOCAL_CHARACTER':
+    case 'SAVE_LOCAL_CHARACTER':
       return {
         ...state,
         characters: [
