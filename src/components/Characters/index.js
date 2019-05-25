@@ -6,15 +6,16 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 // react router
 import { Link } from 'react-router-dom'
+// style
+import './style.css'
 
 import * as charactersActions from '../../actions/characters'
 
 // Antd
-import { Card, Col, Row, Button, Icon } from 'antd'
+import { Card, Icon } from 'antd'
 const { Meta } = Card
 
 export const Characters = ({ loading, error, characters, localCharacters, getCharacters }) => {
-
 
   useEffect(() => { !characters.length && !loading && !error && getCharacters() })
 
@@ -28,48 +29,33 @@ export const Characters = ({ loading, error, characters, localCharacters, getCha
   })
 
   return (
-    <div data-testid="characters-test">
-      <Row gutter={8} type="flex" justify="center">
-        {characters.map((character) =>
-          <Col span={4} key={character.id}>
-            <Card
-              hoverable
-              style={{ margin: '5px 5px' }}
-              size="small"
-              cover={
-                <img
-                  style={{ width: '100%', height: 170 }}
-                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                  alt={`thumbnail`}
-                />
-              }
-              actions={
-                [
-                  <Link to={`/characters/${character.id}`}>
-                    <Icon type="edit" />
-                  </Link>,
-                  <Link to={`/characters/${character.id}/details`}>
-                    <Icon type="ellipsis" />
-                  </Link>
-                ]}
-            >
-              <Meta title={character.name} />
-            </Card>
-          </Col>
-        )
-        }
-      </Row>
-      <div>
-        <Button
-          name="load-more"
-          type="outline"
-          disabled={loading}
-          onClick={() => getCharacters()}
+    <div data-testid="characters-test" className="container">
+      {characters.map((character) =>
+        <Card key={character.id}
+          hoverable
+          style={{ margin: '5px 5px' }}
+          size="small"
+          cover={
+            <img
+              style={{ width: '100%', height: 170 }}
+              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+              alt={`thumbnail`}
+            />
+          }
+          actions={
+            [
+              <Link to={`/characters/${character.id}`}>
+                <Icon type="edit" />
+              </Link>,
+              <Link to={`/characters/${character.id}/details`}>
+                <Icon type="ellipsis" />
+              </Link>
+            ]}
         >
-          Load more
-        </Button>
-      </div>
-
+          <Meta title={character.name} />
+        </Card>
+      )
+      }
     </div>
   )
 }

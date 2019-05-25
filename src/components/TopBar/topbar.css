@@ -1,0 +1,52 @@
+.container-topbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-auto-rows: 50px auto;
+  grid-gap: 10px;
+  align-items: center;
+  background-color: gainsboro;
+}
+
+.name {
+  margin: 0;
+  padding: 0 50px;
+  font-size: 30px;
+}
+
+.input-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  width: 220px;
+  border-radius: 10px;
+  padding: 0 5px;
+  border: none;
+  height: 30px;
+  box-shadow: #adad85 1px 1px 1px;
+  transition: width 0.5s;
+  outline: none;
+  margin-right: 50px;
+}
+
+.input:hover,
+.input:focus  {
+  width: 240px;
+}
+
+.btn-search {
+  position: absolute;
+  background: none;
+  outline: none;
+  border: none;
+  right: 0;
+  margin-right: 50px;
+  padding-top: 5px;
+}
+
+.btn-img {
+  height: 16px;
+  width: 16px;
+}
