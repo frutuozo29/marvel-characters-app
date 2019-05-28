@@ -12,7 +12,7 @@ import './style.css'
 import * as charactersActions from '../../actions/characters'
 
 // Antd
-import { Card, Icon } from 'antd'
+import { Card, Icon, Button } from 'antd'
 const { Meta } = Card
 
 export const Characters = ({ loading, error, characters, localCharacters, getCharacters }) => {
@@ -56,6 +56,14 @@ export const Characters = ({ loading, error, characters, localCharacters, getCha
         </Card>
       )
       }
+      <Button
+        name="load-more"
+        type="outline"
+        disabled={loading}
+        onClick={() => getCharacters()}
+      >
+        Load more
+        </Button>
     </div>
   )
 }

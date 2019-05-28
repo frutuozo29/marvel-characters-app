@@ -52,10 +52,18 @@ describe('TopBar test without Redux', () => {
     expect(input.value).toEqual('')
   })
 
+  test('handle change search and keyDown', () => {
+
+    const { container } = render(<TopBarComponent {...props} />)
+    const input = container.querySelector('.input')
+    fireEvent.keyDown(input, { code: 13 })
+    expect(input.value).toEqual('')
+  })
+
   test('handle click search', () => {
-    
+
     const { container, getByTestId } = render(<TopBarComponent {...props} />)
-    const button = container.querySelector('.ant-input-search-icon')
+    const button = container.querySelector('.btn-search')
     fireEvent.click(button)
     expect(getByTestId('topbar-test')).toBeInTheDocument()
   })
