@@ -1,0 +1,66 @@
+.container-topbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-auto-rows: 50px auto;
+  grid-column-gap: 50px;
+  align-items: center;
+}
+
+.name {
+  margin: 0 0 0 50px;
+  font-size: 30px;
+}
+
+.input-container {
+  position: relative;
+  justify-self: center;
+  margin-right: 50px;
+}
+
+.input {
+  width: 220px;
+  border-radius: 10px;
+  padding: 0 5px;
+  border: none;
+  height: 30px;
+  box-shadow: #adad85 1px 1px 1px;
+  transition: width 0.5s;
+  outline: none;
+}
+
+.input:hover,
+.input:focus  {
+  width: 240px;
+}
+
+.btn-search {
+  position: absolute;
+  background: none;
+  outline: none;
+  border: none;
+  right: 0;
+  cursor: pointer;
+}
+
+.btn-img {
+  height: 16px;
+  width: 16px;
+}
+
+@media (max-width: 600px) {
+  .container-topbar {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr 1fr;
+    justify-items: center;
+    grid-gap: 10px;
+  }
+
+  .name {
+    font-size: 25px;
+    margin: 0;
+  }  
+
+  .input-container {
+    margin: 0;
+  }
+}
