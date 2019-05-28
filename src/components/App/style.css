@@ -1,0 +1,22 @@
+.container-app {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 50px auto 50px;
+  grid-row-gap: 30px; 
+  
+}
+
+.container-routes {
+  padding: 5px 50px;
+}
+
+.footer {
+  width: 100%;
+  padding: 0 50px;
+  text-align: center;
+}
+
+.footer > h5 {
+  color: #FFF;
+  font-size: 15px;
+}

@@ -13,9 +13,8 @@ import lupa from '../../assets/images/lupa.svg'
 export const TopBar = ({ filter, updateFilter, getCharacters }) => (
   <div className="container-topbar" data-testid="topbar-test">
     <h1 className="name">Marvel Characters</h1>
-    <div className="item-input">
+    <div className="input-container">
       <input
-        autoFocus
         className="input"
         name="search"
         type="search"
@@ -26,7 +25,7 @@ export const TopBar = ({ filter, updateFilter, getCharacters }) => (
           keyCode === 13 && getCharacters(true)
         }}
       />
-      <button className="btn-search">
+      <button className="btn-search" onClick={() => getCharacters(true)}>
         <img className="btn-img" src={lupa} alt="imagem de lupa" />
       </button>
     </div>

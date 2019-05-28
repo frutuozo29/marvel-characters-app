@@ -2,21 +2,19 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-auto-rows: 50px auto;
-  grid-gap: 10px;
+  grid-column-gap: 50px;
   align-items: center;
-  background-color: gainsboro;
 }
 
 .name {
-  margin: 0;
-  padding: 0 50px;
+  margin: 0 0 0 50px;
   font-size: 30px;
 }
 
-.input-item {
+.input-container {
   position: relative;
-  display: flex;
-  justify-content: center;
+  justify-self: center;
+  margin-right: 50px;
 }
 
 .input {
@@ -28,7 +26,6 @@
   box-shadow: #adad85 1px 1px 1px;
   transition: width 0.5s;
   outline: none;
-  margin-right: 50px;
 }
 
 .input:hover,
@@ -42,11 +39,28 @@
   outline: none;
   border: none;
   right: 0;
-  margin-right: 50px;
-  padding-top: 5px;
+  cursor: pointer;
 }
 
 .btn-img {
   height: 16px;
   width: 16px;
+}
+
+@media (max-width: 600px) {
+  .container-topbar {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr 1fr;
+    justify-items: center;
+    grid-gap: 10px;
+  }
+
+  .name {
+    font-size: 25px;
+    margin: 0;
+  }  
+
+  .input-container {
+    margin: 0;
+  }
 }
