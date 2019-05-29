@@ -1,0 +1,33 @@
+.input-container {
+  position: relative;
+}
+
+.input {
+  width: 220px;
+  border-radius: 10px;
+  padding: 0 5px;
+  border: none;
+  height: 30px;
+  box-shadow: #adad85 1px 1px 1px;
+  transition: width 0.5s;
+  outline: none;
+}
+
+.input:hover,
+.input:focus  {
+  width: 260px;
+}
+
+.btn-search {
+  position: absolute;
+  background: none;
+  outline: none;
+  border: none;
+  right: 0;
+  cursor: pointer;
+}
+
+.btn-img {
+  height: 16px;
+  width: 16px;
+}

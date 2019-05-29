@@ -1,34 +1,28 @@
 import React from 'react';
-import './topbar.css'
+import './styles.css'
 import * as filterActions from '../../actions/filter'
 import * as charactersActions from '../../actions/characters'
+
+import InputSearch from '../InputSearch'
 
 // redux
 import { bindActionCreators } from 'redux'
 // react-redux
 import { connect } from 'react-redux'
-// svg
-import lupa from '../../assets/images/lupa.svg'
 
 export const TopBar = ({ filter, updateFilter, getCharacters }) => (
   <div className="container-topbar" data-testid="topbar-test">
     <h1 className="name">Marvel Characters</h1>
-    <div className="input-container">
-      <input
-        className="input"
-        name="search"
-        type="search"
-        placeholder="Find a character"
-        value={filter}
-        onChange={({ target: { value } }) => updateFilter(value)}
-        onKeyDown={({ keyCode }) => {
-          keyCode === 13 && getCharacters(true)
-        }}
-      />
-      <button className="btn-search" onClick={() => getCharacters(true)}>
-        <img className="btn-img" src={lupa} alt="imagem de lupa" />
-      </button>
-    </div>
+    <InputSearch
+      name="search"
+      placeholder="Find a character"
+      value={filter}
+      onKeyDown={({ keyCode }) => {
+        keyCode === 13 && getCharacters(true)
+      }}
+      onChange={({ target: { value } }) => updateFilter(value)}
+      onClick={(() => getCharacters(true))}
+    />
   </div>
 )
 

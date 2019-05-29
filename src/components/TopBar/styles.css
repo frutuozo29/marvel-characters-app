@@ -1,0 +1,26 @@
+.container-topbar {
+  display: grid;
+  margin: 0 50px;
+  grid-template-columns: 1fr auto;
+  grid-auto-rows: 50px auto;
+  grid-column-gap: 50px;
+  align-items: center;
+}
+
+.name {
+  margin: 0;
+  font-size: 30px;
+}
+
+@media (max-width: 640px) {
+  .container-topbar {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr 1fr;
+    justify-items: center;
+    grid-gap: 10px;
+  }
+
+  .name {
+    font-size: 25px;
+  }
+}
