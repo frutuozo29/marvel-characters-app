@@ -20,9 +20,7 @@ describe('TopBar test with Redux', () => {
   })
 
   test('render component with redux', () => {
-
     const { getByTestId } = render(<Provider store={store}><TopBar /></Provider>)
-
     expect(getByTestId('topbar-test')).toBeInTheDocument()
   })
 })
@@ -39,33 +37,27 @@ describe('TopBar test without Redux', () => {
   })
 
   test('render component without redux', () => {
-
     const { getByTestId } = render(<TopBarComponent {...props} />)
     expect(getByTestId('topbar-test')).toBeInTheDocument()
   })
 
-  test('handle change search', () => {
-
+  test('handle change inputSearch', () => {
     const { container } = render(<TopBarComponent {...props} />)
-    const input = container.querySelector('input[name=search]')
-    fireEvent.change(input, { target: { value: 1 } })
-    expect(input.value).toEqual('')
+    fireEvent.change(container.querySelector('input[name=search]'), { target: { value: 1 } })
+    expect(props.updateFilter).toBeCalledWith('1')
   })
 
   test('handle change search and keyDown', () => {
-
     const { container } = render(<TopBarComponent {...props} />)
-    const input = container.querySelector('.input')
-    fireEvent.keyDown(input, { code: 13 })
-    expect(input.value).toEqual('')
+    fireEvent.keyDown(container.querySelector('input[name=search]'), { keyCode: 13 })
+    expect(props.getCharacters).toBeCalledWith(true)
   })
 
   test('handle click search', () => {
 
-    const { container, getByTestId } = render(<TopBarComponent {...props} />)
-    const button = container.querySelector('.btn-search')
-    fireEvent.click(button)
-    expect(getByTestId('topbar-test')).toBeInTheDocument()
+    const { container } = render(<TopBarComponent {...props} />)
+    fireEvent.click(container.querySelector('.btn-search'))
+    expect(props.getCharacters).toBeCalledWith(true)
   })
 
 
